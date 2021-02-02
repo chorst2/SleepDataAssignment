@@ -7,6 +7,9 @@ namespace SleepData
     {
         static void Main(string[] args)
         {
+            //creating variable for text file
+            string file = "data.txt";
+
              // ask for input
             Console.WriteLine("Enter 1 to create data file.");
             Console.WriteLine("Enter 2 to parse data.");
@@ -60,6 +63,30 @@ namespace SleepData
             else if (resp == "2")
             {
                 // TODO: parse data file
+                // read data from file
+                    if (File.Exists(file))
+                    {
+                        // read data from file
+                        StreamReader sr = new StreamReader(file);
+                        while (!sr.EndOfStream)
+                        {
+                            string line = sr.ReadLine();
+                            // convert string to array
+                            string[] arr = line.Split(',', '|');                            
+                    
+                            //output the table
+                            Console.WriteLine($"Week ending on {arr[0]:MMM}, {arr[0]:dd}, {arr[0]:YYYY}");
+                            Console.WriteLine($"Mo Tu We Th Fr Sa Su");
+                            Console.WriteLine("-- -- -- -- -- -- --");
+                            Console.WriteLine($"{arr[1]} {arr[2]} {arr[3]} {arr[4]} {arr[5]} {arr[6]} {arr[7]}");
+                        }
+                        sr.Close();
+                    }
+                    else
+                    {
+                        Console.WriteLine("File does not exist");
+                    }
+
 
             }
         }

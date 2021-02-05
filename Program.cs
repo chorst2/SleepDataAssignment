@@ -73,13 +73,25 @@ namespace SleepData
                             string line = sr.ReadLine();
                             // convert string to array
                             string[] arr = line.Split(',', '|');            
-                            var parsedDate = DateTime.Parse(arr[0]);                
+                            var parsedDate = DateTime.Parse(arr[0]);          
+
+                            //add up arrays [ 1 - 7]
+                            int parsedSleepOne = Int32.Parse(arr[1]);
+                            int parsedSleepTwo = Int32.Parse(arr[2]);
+                            int parsedSleepThree = Int32.Parse(arr[3]);
+                            int parsedSleepFour = Int32.Parse(arr[4]);
+                            int parsedSleepFive = Int32.Parse(arr[5]);
+                            int parsedSleepSix = Int32.Parse(arr[6]);
+                            int parsedSleepSeven = Int32.Parse(arr[7]);
+                            int totalWeekSleep = parsedSleepOne + parsedSleepTwo + parsedSleepThree + parsedSleepFour + parsedSleepFive + parsedSleepSix + parsedSleepSeven;
+                            //average of total
+                            double avgWeekSleep = totalWeekSleep / 7.0;    
                     
                             //output the table
                             Console.WriteLine($"Week ending on {parsedDate:MMM}, {parsedDate:dd}, {parsedDate:yyyy}");
-                            Console.WriteLine($"{"Mo",3}{"Tu",3}{"We",3}{"Th",3}{"Fr",3}{"Sa",3}{"Su",3}");
-                            Console.WriteLine($"{"--",3}{"--",3}{"--",3}{"--",3}{"--",3}{"--",3}{"--",3}");
-                            Console.WriteLine($"{arr[1],3}{arr[2],3}{arr[3],3}{arr[4],3}{arr[5],3}{arr[6],3}{arr[7],3}");
+                            Console.WriteLine($"{"Mo",5}{"Tu",5}{"We",5}{"Th",5}{"Fr",5}{"Sa",5}{"Su",5}{"Tot",5}{"Avg",5}");
+                            Console.WriteLine($"{"--",5}{"--",5}{"--",5}{"--",5}{"--",5}{"--",5}{"--",5}{"---",5}{"---",5}");
+                            Console.WriteLine($"{arr[1],5}{arr[2],5}{arr[3],5}{arr[4],5}{arr[5],5}{arr[6],5}{arr[7],5}{totalWeekSleep,5}{avgWeekSleep,5:n1}");
                         }
                         sr.Close();
                     }

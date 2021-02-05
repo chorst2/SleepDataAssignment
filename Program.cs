@@ -72,13 +72,14 @@ namespace SleepData
                         {
                             string line = sr.ReadLine();
                             // convert string to array
-                            string[] arr = line.Split(',', '|');                            
+                            string[] arr = line.Split(',', '|');            
+                            var parsedDate = DateTime.Parse(arr[0]);                
                     
                             //output the table
-                            Console.WriteLine($"Week ending on {arr[0]:MMM}, {arr[0]:dd}, {arr[0]:YYYY}");
-                            Console.WriteLine($"Mo Tu We Th Fr Sa Su");
-                            Console.WriteLine("-- -- -- -- -- -- --");
-                            Console.WriteLine($"{arr[1]} {arr[2]} {arr[3]} {arr[4]} {arr[5]} {arr[6]} {arr[7]}");
+                            Console.WriteLine($"Week ending on {parsedDate:MMM}, {parsedDate:dd}, {parsedDate:yyyy}");
+                            Console.WriteLine($"{"Mo",3}{"Tu",3}{"We",3}{"Th",3}{"Fr",3}{"Sa",3}{"Su",3}");
+                            Console.WriteLine($"{"--",3}{"--",3}{"--",3}{"--",3}{"--",3}{"--",3}{"--",3}");
+                            Console.WriteLine($"{arr[1],3}{arr[2],3}{arr[3],3}{arr[4],3}{arr[5],3}{arr[6],3}{arr[7],3}");
                         }
                         sr.Close();
                     }

@@ -105,7 +105,7 @@ namespace SleepData
                     }
                     else
                     {
-                        Console.WriteLine("File does not exist");
+                        logger.Warn("File does not exists. {file}", file);
                     }
 
             }

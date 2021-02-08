@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using NLog.Web;
 
 namespace SleepData
 {
@@ -7,6 +8,13 @@ namespace SleepData
     {
         static void Main(string[] args)
         {
+            // create instance of Logger
+            string path = Directory.GetCurrentDirectory() + "\\nlog.config";
+            var logger = NLog.Web.NLogBuilder.ConfigureNLog(path).GetCurrentClassLogger();
+
+            logger.Info("Program started");
+
+
             //creating variable for text file
             string file = "data.txt";
 
@@ -100,8 +108,8 @@ namespace SleepData
                         Console.WriteLine("File does not exist");
                     }
 
-
             }
+            logger.Info("Program ended");
         }
     }
 }
